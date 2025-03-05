@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const modal_container = document.getElementById("settingModal");
     const closeBtn = document.querySelector(".close");
 
-
     modal_container.style.display = "none";
 
     openBtn.addEventListener("click", () => {
@@ -19,4 +18,5 @@ document.addEventListener("DOMContentLoaded", function() {
             modal_container.style.display = "none";
         }
     });
+    
 });
