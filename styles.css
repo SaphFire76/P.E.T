@@ -70,7 +70,8 @@
 }
 
 .catbtn img{
-    width: 220px
+    width: 220px;
+    background: transparent;
 }
 
 .catbtn img:hover{
