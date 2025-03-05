@@ -136,7 +136,7 @@
 }
 
 .close {
-    color: grey;
+    color: black;
     float: right;
     font-size: 25px;
     font-weight: bold;
@@ -144,5 +144,5 @@
 }
 
 .close:hover {
-    color:black;
+    color:grey;
 }
