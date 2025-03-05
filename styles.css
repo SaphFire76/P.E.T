@@ -61,6 +61,22 @@
     align-items: center;
 }
 
+.catbtn{
+    display: flex;
+    align-items: center;
+    margin-top: 70px;
+    margin-left: 10px;
+    border: none;
+}
+
+.catbtn img{
+    width: 220px
+}
+
+.catbtn img:hover{
+    cursor: pointer;
+}
+
 .catTimer{
     height: 40vh;
     width: 40vh;
