@@ -3,6 +3,9 @@ let countdown;
 function startTimer() {
     let timeLeft = 25 * 60;
     const timerDisplay = document.getElementById("timer");
+    const button = document.querySelector(".catbtn")
+
+    button.disabled = true;
 
     clearInterval(countdown);
 
@@ -16,6 +19,8 @@ function startTimer() {
             clearInterval(countdown);
             timerDisplay.textContent = "00:00"; 
             alert("Time's up!");
+
+            button.disabled = false;
         } else {
             timeLeft--;
         }
