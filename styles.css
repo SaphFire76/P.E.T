@@ -52,43 +52,43 @@
     justify-content: space-between;
     align-items: center;
     gap: 0.5em;
-}
-
-/* Main Space */
-.main{
-    width: 100vw;
-    height: 75vh;
-
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-
-/* CAT */
-
-.catbtn{
-    display: flex;
-    align-items: center;
-    margin-top: 75px;
-    margin-left: 22px;
-    border: none;
-}
-
-.catbtn img{
-    width: 200px;
     background: transparent;
 }
 
-.catbtn img:hover{
-    cursor: pointer;
+/* Main Space */
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.catTimer{
+/* CAT */
+.catTimer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 40vh;
     width: 40vh;
     border: 35px solid #e25100;
-    border-radius: 20vh;
+    border-radius: 50%;
+    position: relative;
+}
+
+.catbtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: transparent;
+}
+
+.catbtn img {
+    max-width: 90%;
+    background: transparent;
+}
+
+.catbtn img:hover {
+    cursor: pointer;
 }
 
 /* Footer Ribbon */
@@ -110,6 +110,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background: transparent;
 }
 
 .modal {
