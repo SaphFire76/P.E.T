@@ -1,12 +1,13 @@
 const modal = document.getElementById("settingModal");
 const modalBtn = document.getElementById("settingBtn");
-const close = document.getElementById("close")[0];
+const close = document.getElementById(".close");
 
 modalBtn.addEventListener("click", () => {
     modal.style.display = "flex";
 });
 
 close.addEventListener("click", () => {
+    console
     modal.style.display = "none";
 });
 
