@@ -135,6 +135,11 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+.modal-content.show {
+    pointer-events: auto;
+    opacity: 1;
+}
+
 .close {
     color: black;
     float: right;
