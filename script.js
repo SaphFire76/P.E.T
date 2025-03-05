@@ -1,18 +1,21 @@
-const modal = document.getElementById("settingModal");
-const modalBtn = document.getElementById("settingBtn");
-const close = document.getElementById(".close");
+const openBtn = document.getElementById("settingBtn");
+const modal_container = document.getElementById("settingModal");
+const closeBtn = document.querySelector(".close");
 
-modalBtn.addEventListener("click", () => {
-    modal.style.display = "flex";
+
+modal_container.style.display = "none";
+
+openBtn.addEventListener("click", () => {
+    modal_container.style.display = "flex";
 });
 
-close.addEventListener("click", () => {
-    console
-    modal.style.display = "none";
+closeBtn.addEventListener("click", () => {
+    console.log("closing")
+    modal_container.style.display = "none";
 });
 
 window.addEventListener("click", (e) =>{
     if(e.target == open) {
-        modal.style.display = "none";
+        modal_container.style.display = "none";
     }
 });
