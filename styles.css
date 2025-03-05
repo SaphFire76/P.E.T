@@ -70,8 +70,8 @@
 .catbtn{
     display: flex;
     align-items: center;
+    margin: auto;
     margin-top: 75px;
-    margin-left: 22px;
     border: none;
 }
 
