@@ -1,3 +1,9 @@
+:root {
+    --clr-dark: #070a13;
+    --clr-light: white;
+}
+
+
 *,
 *::before,
 *::after{
@@ -12,10 +18,18 @@
     font-weight: bold;
 }
 
+.dark-mode {
+    --clr-light: #070a13;
+    --clr-dark: white;
+}
+
 /* UI */
 .body{
     width: 100vw;
     height: 100vh;
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 
     display: flex;
     flex-direction: column;
@@ -29,6 +43,9 @@
     padding: 0 1em;
     border-bottom: solid 2px black;
     box-shadow: 0px 2px 5px grey;
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 
     display: flex;
     justify-content: space-between;
@@ -60,10 +77,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 }
 
 /* CAT */
 .catTimer {
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,6 +120,9 @@
     height: 10vh;
     border-top: solid 2px black;
     box-shadow: 0px -2px 5px grey;
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 }
 
 
@@ -163,7 +189,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 250px;
     padding: 8px 8px;
     gap: 20px;
 }
