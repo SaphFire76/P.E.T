@@ -51,7 +51,10 @@
     justify-content: space-between;
     align-items: center;
 }
-
+#header1{
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+}
 .header{
     width: 8em;
     height: 3em;
@@ -62,6 +65,8 @@
 #timer{
     border: 2px solid black;
     border-radius: 8px;
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 }
 
 #coins{
