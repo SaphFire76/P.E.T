@@ -20,7 +20,7 @@
 }
 
 .dark-mode {
-    --clr-light: #070a13;
+    --clr-light: #222831;
     --clr-dark: white;
 }
 
@@ -126,6 +126,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 }
 
 .catbtn {
@@ -158,6 +161,11 @@
 
 
 /* SETTINGS */
+
+.dark-mode #settingBtn img{
+    filter: invert(1);
+}
+
 #settingBtn {
     width: 50px;
     height: 50px;
@@ -186,6 +194,9 @@
 .modal.show {
     display: flex;
     pointer-events: auto;
+    
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 }
 
 .modal-content {
@@ -196,6 +207,9 @@
     width: 300px;
     text-align: center;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 }
 
 .close {
@@ -214,6 +228,9 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 }
 
 .option {
@@ -223,6 +240,9 @@
     width: 250px;
     padding: 8px 8px;
     gap: 20px;
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 }
 
 .toggle {
@@ -234,12 +254,18 @@
     width: 60px;
     height: 34px;
     flex-shrink: 0;
+    
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 }
 
 .toggle input{
     opacity: 0;
     width: 0;
     height: 0;
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 }
 
 .slider {
@@ -268,7 +294,7 @@
 }
 
 .toggle input:checked + .slider {
-    background-color: black ;
+    background-color: #171717;
 }
 
 input:focus + .slider {
@@ -288,6 +314,11 @@ input:focus + .slider {
     border-radius: 50%;
 }
 
+#darkmodeH2, .close {
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+}
+
 .label {
     display: flex;
     align-items: center;
@@ -296,4 +327,7 @@ input:focus + .slider {
     font-size: 20px;
     padding: 8px 16px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 }

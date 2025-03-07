@@ -14,9 +14,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     window.addEventListener("click", (e) =>{
-        if(e.target == open) {
+        if(e.target === modal_container) {
             modal_container.style.display = "none";
         }
-    });
-    
+    });  
 });
