@@ -1,6 +1,7 @@
 :root {
     --clr-dark: #070a13;
     --clr-light: white;
+    /* #e3edf7 */
 }
 
 
@@ -86,28 +87,20 @@
     background-color: var(--clr-light);
     color: var(--clr-dark);
 }
-.catTimer{
-    height: 40vh;
-    width: 40vh;
-    border: 35px solid #e25100;
-    border-radius: 20vh;
-    bor
-}
 
-svg{
+#countdown_svg{
     position: absolute;
-    top: 50%;
-    left: 50%;
     background-color: transparent;
 }
 
-circle{
+#countdown_svg>circle{
     fill: none;
-    
+    stroke: #e25100;
+    stroke-width: 33px;
 }
 
 /* CAT */
-.catTimer {
+.catTimerOuter{
     background-color: var(--clr-light);
     color: var(--clr-dark);
 
@@ -116,9 +109,21 @@ circle{
     align-items: center;
     height: 40vh;
     width: 40vh;
-    border: 35px solid #e25100;
+    border: 1px solid #000000;
     border-radius: 50%;
     position: relative;
+    box-shadow: 10px 10px 10px -1px rgba(0, 0, 0, 0.15),
+                -10px -10px 10px -1px rgba(255, 255, 255, 0.7);
+}
+
+.catTimerInner{
+    width: 33vh;
+    height: 33vh;
+    border: 1px solid black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .catbtn {
@@ -183,7 +188,7 @@ circle{
 
 .modal-content {
     background-color: white;
-    border-radius: 5px;
+    border-radius: 8px;
     border: 2px solid black;
     padding: 20px;
     width: 300px;

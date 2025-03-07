@@ -18,7 +18,7 @@
                 <div class="header" id="timer">00:00</div>
                 <div class="header" id="header1" style="display: flex; justify-content: flex-end;">
                     <div id="coins">
-                        <img style="height: 2em;" src="Coin.png"> 
+                        <img style="height: 2em; background-color: transparent;" src="Coin.png"> 
                         <div id="header1">15</div>
                     </div>
                 </div>
@@ -26,13 +26,15 @@
 
             <!-- Main Space -->
             <div class="main">
-                <div class="catTimer">
-                <button class="catbtn" onclick="startTimer()">
-                    <img src="cat.png" alt="cat sleeping">
-                </button>                
+                <div class="catTimerOuter">
+                    <div class="catTimerInner">
+                        <button class="catbtn" onclick="startTimer()">
+                            <img src="cat.png" alt="cat sleeping">
+                        </button>
+                    </div>
                 </div>
-                <svg height="100" width="100" xmlns="http://www.w3.org/2000/svg">
-                    <circle r="45" cx="50" cy="50" fill="red" />
+                <svg id="countdown_svg" height="40vh" width="40vh" xmlns="http://www.w3.org/2000/svg">
+                    <circle r="18vh" cx="20vh" cy="20vh" fill="red" />
                 </svg>
             </div>
 
@@ -40,7 +42,7 @@
             <div class="footer">
                 <!-- Settings -->
                 <button id="settingBtn">
-                    <img src="settingsIcon.png" alt="Settings">
+                    <img style="background-color: transparent;" src="settingsIcon.png" alt="Settings">
                 </button>
             </div>
         </div>
