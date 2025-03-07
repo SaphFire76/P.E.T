@@ -112,8 +112,10 @@
     border: 1px solid #000000;
     border-radius: 50%;
     position: relative;
+    /*
     box-shadow: 10px 10px 10px -1px rgba(0, 0, 0, 0.15),
                 -10px -10px 10px -1px rgba(255, 255, 255, 0.7);
+    */
 }
 
 .catTimerInner{
