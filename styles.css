@@ -1,3 +1,9 @@
+:root {
+    --clr-dark: #070a13;
+    --clr-light: white;
+}
+
+
 *,
 *::before,
 *::after{
@@ -12,10 +18,18 @@
     font-weight: bold;
 }
 
+.dark-mode {
+    --clr-light: #070a13;
+    --clr-dark: white;
+}
+
 /* UI */
 .body{
     width: 100vw;
     height: 100vh;
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 
     display: flex;
     flex-direction: column;
@@ -30,11 +44,17 @@
     border-bottom: solid 2px black;
     box-shadow: 0px 2px 5px grey;
 
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
+#header1{
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+}
 .header{
     width: 8em;
     height: 3em;
@@ -45,6 +65,8 @@
 #timer{
     border: 2px solid black;
     border-radius: 8px;
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 }
 
 #coins{
@@ -52,18 +74,18 @@
     justify-content: space-between;
     align-items: center;
     gap: 0.5em;
+    background: transparent;
 }
 
 /* Main Space */
-.main{
-    width: 100vw;
-    height: 75vh;
-
+.main {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-}
 
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+}
 .catTimer{
     height: 40vh;
     width: 40vh;
@@ -85,21 +107,34 @@ circle{
 }
 
 /* CAT */
+.catTimer {
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 
-.catbtn{
     display: flex;
+    justify-content: center;
     align-items: center;
-    margin: auto;
-    margin-top: 75px;
-    border: none;
+    height: 40vh;
+    width: 40vh;
+    border: 35px solid #e25100;
+    border-radius: 50%;
+    position: relative;
 }
 
-.catbtn img{
-    width: 200px;
+.catbtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
     background: transparent;
 }
 
-.catbtn img:hover{
+.catbtn img {
+    max-width: 90%;
+    background: transparent;
+}
+
+.catbtn img:hover {
     cursor: pointer;
 }
 
@@ -109,6 +144,9 @@ circle{
     height: 10vh;
     border-top: solid 2px black;
     box-shadow: 0px -2px 5px grey;
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 }
 
 
@@ -122,8 +160,9 @@ circle{
     display: flex;
     align-items: center;
     justify-content: center;
+    background: transparent;
 }
-/*
+
 .modal {
     display: none;
     position: fixed;
@@ -131,10 +170,15 @@ circle{
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.modal.show {
+    display: flex;
+    pointer-events: auto;
 }
 
 .modal-content {
@@ -157,4 +201,92 @@ circle{
 
 .close:hover {
     color:grey;
+}
+
+.settingOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 250px;
+    padding: 8px 8px;
+    gap: 20px;
+}
+
+.toggle {
+    display: flex;
+    position: relative;
+    display: inline-block;
+    justify-items: center;
+    align-items: center;
+    width: 60px;
+    height: 34px;
+    flex-shrink: 0;
+}
+
+.toggle input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;  
+    background-color: #ccc;
+    border-radius: 34px;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider::before{
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.toggle input:checked + .slider {
+    background-color: black ;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 5px black;
+}
+
+.toggle input:checked + .slider::before {
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}   
+
+.slider:before {
+    border-radius: 50%;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    padding: 8px 16px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
 }

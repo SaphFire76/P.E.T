@@ -6,6 +6,7 @@
     <title>P.E.T</title>
     <link rel="stylesheet" href="styles.css">
     <script src="timer.js" defer></script>
+    <script src="script.js"></script>
 </head>
     <body>
         <!-- UI -->
@@ -13,12 +14,12 @@
 
             <!-- Header Ribbon -->
             <div id="header">
-                <div class="header"></div>
+                <div class="header" id="header1"></div>
                 <div class="header" id="timer">00:00</div>
-                <div class="header" style="display: flex; justify-content: flex-end;">
+                <div class="header" id="header1" style="display: flex; justify-content: flex-end;">
                     <div id="coins">
                         <img style="height: 2em;" src="Coin.png"> 
-                        <div>15</div>
+                        <div id="header1">15</div>
                     </div>
                 </div>
             </div>
@@ -48,10 +49,28 @@
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h2>Settings</h2>
+
+                <div class="settingOptions">
+                    <div class="option">
+                        <button class="label">Notification</button>
+                        <label class="toggle">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                <div class="settingOptions">
+                    <div class="option">
+                        <button class="label">Dark Mode</button>
+                        <label class="toggle">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                </div>
             </div>
         </div>
-
-        <script src="script.js" defer></script>
 
     </body>
 </html>
