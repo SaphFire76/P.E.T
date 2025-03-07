@@ -1,6 +1,6 @@
 :root {
-    --clr-dark: #070a13;
-    --clr-light: white;
+    --clr-dark: #222831;
+    --clr-light: #ddd7ce;
     /* #e3edf7 */
 }
 
@@ -21,7 +21,7 @@
 
 .dark-mode {
     --clr-light: #222831;
-    --clr-dark: white;
+    --clr-dark: #ddd7ce;
 }
 
 /* UI */
