@@ -64,6 +64,25 @@
     align-items: center;
 }
 
+.catTimer{
+    height: 40vh;
+    width: 40vh;
+    border: 35px solid #e25100;
+    border-radius: 20vh;
+    bor
+}
+
+svg{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: transparent;
+}
+
+circle{
+    fill: none;
+    
+}
 
 /* CAT */
 
@@ -82,13 +101,6 @@
 
 .catbtn img:hover{
     cursor: pointer;
-}
-
-.catTimer{
-    height: 40vh;
-    width: 40vh;
-    border: 35px solid #e25100;
-    border-radius: 20vh;
 }
 
 /* Footer Ribbon */
