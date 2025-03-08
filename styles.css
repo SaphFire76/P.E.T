@@ -241,13 +241,15 @@
 }
 
 .close:hover {
-    color:grey;
+    color:#71797E;
 }
 
 .settingOptions {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    align-items: center;
+    justify-content: center;
 
     background-color: var(--clr-light);
     color: var(--clr-dark);
@@ -298,6 +300,7 @@
     bottom: 0;  
     background-color: #ccc;
     border-radius: 34px;
+    border: 1px solid black;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -351,4 +354,21 @@ input:focus + .slider {
 
     background-color: var(--clr-light);
     color: var(--clr-dark);
+}
+
+
+.font{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    padding: 10px 30px;
+    margin-left: 87px;
+
+    border-style: 5px, groove black;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);   
 }
