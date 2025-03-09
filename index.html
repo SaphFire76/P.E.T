@@ -14,7 +14,7 @@
             <!-- Header Ribbon -->
             <div id="header">
                 <div class="header" id="header1"></div>
-                <div class="header" id="timer">00:00</div>
+                <div class="header" id="timer">25:00</div>
                 <div class="header" id="header1" style="display: flex; justify-content: flex-end;">
                     <div id="coins">
                         <img style="height: 2em; background-color: transparent;" src="Coin.png"> 
@@ -25,6 +25,9 @@
 
             <!-- Main Space -->
             <div class="main">
+                <svg id="countdown_svg" height="40vh" width="40vh" xmlns="http://www.w3.org/2000/svg">
+                    <circle r="18vh" cx="20vh" cy="20vh" fill="red" />
+                </svg>
                 <div class="catTimerOuter">
                     <div class="catTimerInner">
                         <button class="catbtn" onclick="startTimer()">
@@ -32,16 +35,13 @@
                         </button>
                     </div>
                 </div>
-                <svg id="countdown_svg" height="40vh" width="40vh" xmlns="http://www.w3.org/2000/svg">
-                    <circle r="18vh" cx="20vh" cy="20vh" fill="red" />
-                </svg>
             </div>
 
             <!-- Footer Ribbon -->
             <div class="footer">
                 <!-- Settings -->
                 <button id="settingBtn">
-                    <img style="background-color: transparent;" src="settingsIcon.png" alt="Settings">
+                    <img style="background-color: transparent; width: inherit;" src="settingsIcon.png" alt="Settings">
                 </button>
             </div>
         </div>

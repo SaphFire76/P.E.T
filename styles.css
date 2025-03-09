@@ -100,44 +100,44 @@
     color: var(--clr-dark);
 }
 
-#countdown_svg{
+#countdown_svg {
     position: absolute;
+    transform: rotate(-90deg);
     background-color: transparent;
 }
 
-#countdown_svg>circle{
+#countdown_svg>circle {
     fill: none;
     stroke: #e25100;
     stroke-width: 33px;
+    stroke-dasharray: 959;
+    stroke-dashoffset: 0;
 }
 
 /* CAT */
-.catTimerOuter{
-    background-color: var(--clr-light);
+.catTimerOuter {
+    background-color: transparent;
     color: var(--clr-dark);
 
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40vh;
-    width: 40vh;
-    border: 1px solid #000000;
+    height: 39.9vh;
+    width: 39.9vh;
     border-radius: 50%;
     position: relative;
-    /*
+
     box-shadow: 10px 10px 10px -1px rgba(0, 0, 0, 0.15),
-                -10px -10px 10px -1px rgba(255, 255, 255, 0.7);
-    */
+                -10px -10px 10px -1px rgba(255, 248, 237, 0.7);
 }
 
 .dark-mode .catTimerOuter{
     border: 1px solid #ddd7ce;
 }
 
-.catTimerInner{
-    width: 33vh;
-    height: 33vh;
-    border: 1px solid black;
+.catTimerInner {
+    width: 38vh;
+    height: 38vh;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -145,6 +145,12 @@
     
     background-color: var(--clr-light);
     color: var(--clr-dark);
+
+    box-shadow: inset 10px 10px 10px -1px rgba(0, 0, 0, 0.2),
+                inset -10px -10px 10px -1px rgba(255, 248, 237, 0.7),
+                /* -0.5px -0.5px 0px rgba(255, 248, 237, 0.3), */
+                0.5px 0.5px 0px rgba(0, 0, 0, 0.15),
+                0px 12px 10px -10px rgba(0, 0, 0, 0.05);
 }
 
 .catbtn {
@@ -188,7 +194,8 @@
 }
 
 #settingBtn {
-    width: 50px;
+    margin: auto;
+    width: 29px;
     height: 50px;
     border-radius: 50%;
     border: none;
@@ -197,6 +204,13 @@
     align-items: center;
     justify-content: center;
     background: transparent;
+
+    transition: transform 0.5s, width 0.5s;
+}
+
+#settingBtn:hover {
+    transform: rotate(180deg);
+    width: 32px;
 }
 
 .modal {
