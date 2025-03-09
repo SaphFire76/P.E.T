@@ -132,9 +132,9 @@
 }
 
 .dark-mode .catTimerOuter{
-    border: 1px solid #ddd7ce;
-    box-shadow: 10px 10px 10px -1px rgba(0, 0, 0, 0.15),
-            -10px -10px 10px -1px rgba(0, 0, 0, 0.7);
+    /* border: 1px solid #ddd7ce; */
+    box-shadow: 10px 10px 10px -1px rgba(0, 0, 0, 0.3),
+                -10px -10px 10px -1px rgba(56, 65, 80, 0.6);
 }
 
 .catTimerInner {
@@ -157,7 +157,7 @@
 
 .dark-mode .catTimerInner{
     box-shadow: inset 10px 10px 10px -1px rgba(0, 0, 0, 0.2),
-                inset -10px -10px 10px -1px rgba(0, 0, 0, 0.7),
+                inset -10px -10px 10px -1px rgba(56, 65, 80, 0.6),
                 0.5px 0.5px 0px rgba(0, 0, 0, 0.15),
                 0px 12px 10px -10px rgba(0, 0, 0, 0.05);
 }
