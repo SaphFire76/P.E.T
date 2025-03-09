@@ -1,7 +1,7 @@
 let countdown;
 
 function startTimer() {
-    var timerDuration= 3000;
+    var timerDuration= 0.5 * 6000;
     let timeLeft = timerDuration;
     const timerDisplay = document.getElementById("timer");
     const button = document.querySelector(".catbtn")
