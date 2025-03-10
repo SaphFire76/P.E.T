@@ -1,9 +1,12 @@
 let countdown;
 
+const timerDisplay = document.getElementById("timer");
+var minutes = 12;
+timerDisplay.textContent = `${String(minutes)}:00`;
+
 function startTimer() {
-    var timerDuration= 0.5 * 6000;
+    var timerDuration= minutes * 6000;
     let timeLeft = timerDuration;
-    const timerDisplay = document.getElementById("timer");
     const button = document.querySelector(".catbtn")
     var circle= document.getElementById('countdown_svg').children[0];
 
@@ -17,12 +20,12 @@ function startTimer() {
         let seconds = Math.floor((timeLeft % 6000)/100);
         var dashOffset= -(959-959*(timeLeft/timerDuration));
 
-        timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+        timerDisplay.textContent = `${String(minutes)}:${String(seconds)}`;
         circle.style.strokeDashoffset= dashOffset.toString();
 
         if (timeLeft <= 0) {    
             clearInterval(countdown);
-            timerDisplay.textContent = "25:00";
+            timerDisplay.textContent = minutes.toString();
             circle.style.strokeDashoffset= '0';
             //alert("Time's up!");
 
