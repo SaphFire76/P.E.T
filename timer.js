@@ -20,7 +20,7 @@ function startTimer() {
         let seconds = Math.floor((timeLeft % 6000)/100);
         var dashOffset= -(959-959*(timeLeft/timerDuration));
 
-        timerDisplay.textContent = `${String(minutes)}:${String(seconds)}`;
+        timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
         circle.style.strokeDashoffset= dashOffset.toString();
 
         if (timeLeft <= 0) {    
