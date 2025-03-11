@@ -4,7 +4,6 @@
     /* #e3edf7 */
 }
 
-
 *,
 *::before,
 *::after{
@@ -348,6 +347,10 @@ input:focus + .slider {
     box-shadow: 0 0 5px black;
 }
 
+.dark-mode input:focus + .slider{
+    box-shadow: 0 0 5px rgba(255, 248, 237, 0.7);
+}
+
 .toggle input:checked + .slider::before {
     -ms-transform: translateX(26px);
     transform: translateX(26px);
@@ -378,7 +381,6 @@ input:focus + .slider {
     background-color: var(--clr-light);
     color: var(--clr-dark);
 }
-
 
 .font{
     display: flex;
