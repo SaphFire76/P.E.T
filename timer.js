@@ -1,8 +1,11 @@
 let countdown;
 
 const timerDisplay = document.getElementById("timer");
-var minutes = 12;
+var minutes = 0.5;
 timerDisplay.textContent = `${String(minutes)}:00`;
+if (minutes < 1){
+    timerDisplay.textContent = `00:${String(minutes*60).padStart(2, "0")}`
+}
 
 function startTimer() {
     var timerDuration= minutes * 6000;
