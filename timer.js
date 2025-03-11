@@ -7,7 +7,7 @@ var seconds = (timerDuration- minutes)*60;
 timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 
 function startTimer() {
-    var timerDuration= minutes * 6000;
+    timerDuration= timerDuration * 6000;
     let timeLeft = timerDuration;
     const button = document.querySelector(".catbtn")
     var circle= document.getElementById('countdown_svg').children[0];
