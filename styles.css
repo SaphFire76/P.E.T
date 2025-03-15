@@ -216,7 +216,6 @@
     align-items: center;
     justify-content: center;
     background: transparent;
-
     transition: transform 0.5s, width 0.5s;
 }
 
