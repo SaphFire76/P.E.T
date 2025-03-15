@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
         currentIndex = (currentIndex + 1) % fontSizes.length;
 
         const newSize = `${originalFontSize * fontSizes[currentIndex]}px`;
-
         const newHeaderHeight = headerHeights[currentIndex];
         const newLabelOffset = labelOffsets[currentIndex];
         const newSliderOffset = sliderOffsets[currentIndex];
