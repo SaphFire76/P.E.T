@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const fontButton = document.querySelector(".font");    
     const textElements = document.querySelectorAll("h1, h2, h3, p, span, label, .text, #timer, #coins div, .label, .modal-content, .option");
     const modal = document.querySelector(".modal-content");
-    const sliders = document.querySelectorAll(".slider");
+    //const sliders = document.querySelectorAll(".slider");
     const fontSizes = ["1x", "1.5x", "2x", "2.5x"];
     let currentIndex = 0;
 
