@@ -184,6 +184,10 @@
     height: 10vh;
     border-top: solid 2px black;
     box-shadow: 0px -2px 5px grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
 
     background-color: var(--clr-light);
     color: var(--clr-dark);
@@ -195,14 +199,14 @@
 }
 
 
-/* SETTINGS */
+/* Footer Options */
 
-.dark-mode #settingBtn img{
+.dark-mode #settingBtn img, .dark-mode #shopBtn img{
     filter: invert(1);
 }
 
-#settingBtn {
-    margin: auto;
+#settingBtn, #shopBtn {
+    margin: 0;
     width: 29px;
     height: 50px;
     border-radius: 50%;
@@ -219,6 +223,11 @@
 #settingBtn:hover {
     transform: rotate(180deg);
     width: 32px;
+}
+
+#shopBtn:hover {
+    transform: perspective();
+    width: 50px;
 }
 
 .modal {
