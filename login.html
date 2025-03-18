@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P.E.T Login Form</title>
+    <link rel="stylesheet" href="loginStyle.css"> <!-- link to CSS file -->
+</head>
+<body>
+    <form id="userForm" action="retrieve.php" method="post">
+        <h2>P.E.T Login Form</h2>
+        
+        <!-- Email Address -->
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+        <div class="error" id="emailError"></div>
+
+        <!-- Password Field -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required
+               minlength="8"
+               pattern="^(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$"
+               title="Password must be at least 8 characters long, contain at least one number, and one special character.">
+        <div class="error" id="passwordError"></div>       
+
+        <!-- Agreement to Terms -->
+        <div class="terms-container">
+            <label for="terms">I agree to the terms and conditions.</label>
+            <input type="checkbox" id="terms" name="terms" required />
+        </div>
+        <div class="error" id="termsError"></div>
+
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+    </form>
+    
+    <!-- link to the JavaScript files -->
+    <script src="validator.js"></script>
+    <!--<script src="test.js"></script>-->
+</body>
+</html>
