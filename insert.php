@@ -3,7 +3,7 @@
     $lastName = $_POST['lastName'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    //Assing variables that take the values from the form
+    //Assign variables that take the values from the form
 
     // Hash the password
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
@@ -13,14 +13,35 @@
     if($conn->connect_error){
         echo "$conn->connect_error";
         die("Connection Failed : ". $conn->connect_error);	
-		//error message if connection fails
+        //error message if connection fails
     } else {
+        // Check if email already exists
+        $checkEmailStmt = $conn->prepare("SELECT * FROM `user information` WHERE email = ?");
+        $checkEmailStmt->bind_param("s", $email);
+        $checkEmailStmt->execute();
+        $checkEmailStmt->store_result();
+        
+        if ($checkEmailStmt->num_rows > 0) {
+            echo "<script>
+                    alert('Error: Email is already used.');
+                    setTimeout(function() {
+                        window.location.href = 'registration.html';
+                    }, 1000); // Wait for 5 seconds before redirecting
+                  </script>";
+                  //error message if email is already used and redirects to registration page
+            $checkEmailStmt->close();
+            $conn->close();
+            exit();
+        }
+
+        $checkEmailStmt->close();
+
         $stmt = $conn->prepare("insert into `user information` (firstName, lastName, email, password, currency) values(?, ?, ?, ?, 15)");	
-		//inserts the values into the database 
+        //inserts the values into the database 
         $stmt->bind_param("ssss", $firstName, $lastName, $email, $hashedPassword); 
-		//binds the parameters
+        //binds the parameters
         $execval = $stmt->execute(); 
-		//executes the query
+        //executes the query
         
         
         $stmt->close();
