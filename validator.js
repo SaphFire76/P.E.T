@@ -41,26 +41,7 @@ document.getElementById('userForm').addEventListener('submit', function (event) 
         isValid = false;
     }
 
-    //age validation
-    const age = document.getElementById('age').value;
-    if (!age || age < 1 || age > 120) {
-        document.getElementById('ageError').textContent = 'Age must be between 1 and 120.';
-        isValid = false;
-    }
-
-    //date of birth validation
-    const dob = document.getElementById('dob').value;
-    if (!dob) {
-        document.getElementById('dobError').textContent = 'Date of birth is required.';
-        isValid = false;
-    }
-
-    //country validation
-    const country = document.getElementById('country').value;
-    if (!country) {
-        document.getElementById('countryError').textContent = 'Please select your country.';
-        isValid = false;
-    }
+    
 
     //terms and conditions validation
     const terms = document.getElementById('terms').checked;
@@ -71,7 +52,7 @@ document.getElementById('userForm').addEventListener('submit', function (event) 
 
     //if all validations pass then form is submitted
     if (isValid) {
-        alert('Form submitted successfully!');
+        //alert('Form submitted successfully!');
         this.submit();
     }
 });
