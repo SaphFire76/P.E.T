@@ -1,4 +1,5 @@
 <?php
+session_start();
 $email = $_POST['email'];
 $password = $_POST['password'];
 
@@ -14,15 +15,12 @@ if ($conn->connect_error) {
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            // Debugging: Print the hashed password from the database
-            echo "Hashed password from DB: " . $row["password"] . "<br>";
-            // Debugging: Print the input password
-            echo "Input password: " . $password . "<br>";
-
             if (password_verify($password, $row["password"])) {
                 echo "Login successful!";
-                // Print the data of the database row
-                echo "ID: " . $row["id"] . " - First Name: " . $row["firstName"] . " - Last Name: " . $row["lastName"] . " - Email: " . $row["email"] . " - Currency: " . $row["currency"] . "<br>";
+                $_SESSION['user_id'] = $row['id']; // Set user ID in session
+                // Redirect to index.php after successful login
+                header("Location: index.php");
+                exit();
             } else {
                 echo "Incorrect password.";
             }
