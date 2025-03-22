@@ -34,6 +34,8 @@
     $conn->close();
     ?>
     <script>
+      const firstName = "<?php echo $user['firstName'];?>";
+      const lastName = "<?php echo $user['lastName'];?>";
       const coins = (<?php echo $coins; ?>);
       window.addEventListener('beforeunload', function() {
          <?php
