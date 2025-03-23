@@ -19,7 +19,7 @@
         $checkEmailStmt = $conn->prepare("SELECT * FROM `user information` WHERE email = ?");
         $checkEmailStmt->bind_param("s", $email);
         $checkEmailStmt->execute();
-        $checkEmailStmt->store_result();
+        $checkEmailStmt->store_result();        //Select values from the database where email is equal to the email entered, meaining that the email is already used
         
         if ($checkEmailStmt->num_rows > 0) {
             echo "<script>

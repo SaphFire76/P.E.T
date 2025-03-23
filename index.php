@@ -36,11 +36,10 @@
     <script>
       const firstName = "<?php echo $user['firstName'];?>";
       const lastName = "<?php echo $user['lastName'];?>";
-      const coins = (<?php echo $coins; ?>);
+      const coins = (<?php echo $coins; ?>);        // Assign PHP variables to JavaScript variables
       window.addEventListener('beforeunload', function() {
-         <?php
-         session_write_close();
-         ?>
+        fetch('logout.php', { method: 'POST' });    // Logout user when tab is closed
+         
       });
     </script>
     <!-- UI -->
@@ -118,7 +117,7 @@
                 </div>
             </div>
 
-            <!-- Add buttons for login and registration -->
+            <!-- Added buttons for login and registration -->
             <div class="settingOptions">
                 <div class="option">
                     <button onclick="window.location.href='login.html'">Login</button>
