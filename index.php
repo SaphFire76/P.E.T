@@ -10,37 +10,40 @@
 <body>
     <!-- PHP code to fetch user data -->
     <?php
-    session_start();
-    $conn = new mysqli('localhost', 'root', '', 'p.e.t database');
-    if ($conn->connect_error) {
-        die("Connection Failed : " . $conn->connect_error);
-    }
+    // session_start();
+    // $conn = new mysqli('http://192.168.1.129', 'root', '', 'p.e.t database');
+    // if ($conn->connect_error) {
+    //     die("Connection Failed : " . $conn->connect_error);
+    // }
 
     // Assuming user is logged in and user ID is stored in session
-    if (isset($_SESSION['user_id'])) {
-        $userId = $_SESSION['user_id'];
-        $result = $conn->query("SELECT * FROM `user information` WHERE id = $userId");
+    // if (isset($_SESSION['user_id'])) {
+    //     $userId = $_SESSION['user_id'];
+    //     $result = $conn->query("SELECT * FROM `user information` WHERE id = $userId");
 
-        if ($result->num_rows > 0) {
-            $user = $result->fetch_assoc();
-            $coins = $user['currency'];
-        } else {
-            $coins = 15; // Default value if user not found
-            }
-    } else {
-        $coins = 15; // Default value if user not logged in
-    }
+    //     if ($result->num_rows > 0) {
+    //         $user = $result->fetch_assoc();
+    //         $coins = $user['currency'];
+    //     } else {
+            // $coins = 15; 
+            // Default value if user not found
+           // }
+    // } else {
+    //     $coins = 15; // Default value if user not logged in
+   // }
 
-    $conn->close();
+   // $conn->close();
     ?>
     <script>
-      const firstName = "<?php echo $user['firstName'];?>";
-      const lastName = "<?php echo $user['lastName'];?>";
-      const coins = (<?php echo $coins; ?>);        // Assign PHP variables to JavaScript variables
-      window.addEventListener('beforeunload', function() {
-        fetch('logout.php', { method: 'POST' });    // Logout user when tab is closed
+    //   const firstName = "<?//php echo $user['firstName'];?>";
+    //   const lastName = "<?//php echo $user['lastName'];?>";
+    //   const coins = (<?//php echo $coins; ?>);        
+      // Assign PHP variables to JavaScript variables
+     // window.addEventListener('beforeunload', function() {
+       // fetch('logout.php', { method: 'POST' });    
+        // Logout user when tab is closed
          
-      });
+      //});
     </script>
     <!-- UI -->
     <div class="body">
@@ -52,7 +55,7 @@
             <div class="header" id="header1" style="display: flex; justify-content: flex-end;">
                 <div id="coins">
                     <img style="height: 2em; background-color: transparent;" src="Coin.png"> 
-                    <div id="header1"><?php echo $coins; ?></div>
+                    <div id="header1"><?//php echo $coins; ?> 15</div>
                 </div>
                 <button onclick="window.location.href='logout.php'">Logout</button>
             </div>
