@@ -1,7 +1,7 @@
 let countdown;
 
 const timerDisplay = document.getElementById("timer");
-var duration = 25; // SET TIMER WITH THIS VARIABLE. (DURATION IN MINUTES).
+var duration = 0.5; // SET TIMER WITH THIS VARIABLE. (DURATION IN MINUTES).
 var minutes = Math.floor(duration);
 //var seconds = (duration- minutes)*60; 
 timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:00`;
