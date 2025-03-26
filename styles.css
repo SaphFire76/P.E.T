@@ -262,6 +262,12 @@
     color: var(--clr-dark);
 }
 
+.shop-modal .modal-content {
+    width: 1300px !important;
+    height: 700px !important;
+}
+
+
 .close {
     color: black;
     float: right;
@@ -405,3 +411,5 @@ input:focus + .slider {
     background-color: var(--clr-light);
     color: var(--clr-dark);   
 }
+
+
