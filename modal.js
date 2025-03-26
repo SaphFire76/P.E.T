@@ -1,21 +1,28 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const openBtn = document.getElementById("settingBtn");
-    const modal_container = document.getElementById("settingModal");
-    const closeBtn = document.querySelector(".close");
+    const settingBtn = document.getElementById("settingBtn");
+    const settingModal = document.getElementById("settingModal");
+    const settingClose = settingModal.querySelector(".close");
 
-    modal_container.style.display = "none";
+    const shopBtn = document.getElementById("shopBtn");
+    const shopModal = document.getElementById("shopModal");
+    const shopClose = shopModal.querySelector(".close");
 
-    openBtn.addEventListener("click", () => {
-        modal_container.style.display = "flex";
+    function openModal(modal) {
+        modal.style.display = "flex";
+    }
+
+    function closeModal(modal) {
+        modal.style.display = "none";
+    }
+
+    settingBtn.addEventListener("click", () => openModal(settingModal));
+    shopBtn.addEventListener("click", () => openModal(shopModal));
+
+    settingClose.addEventListener("click", () => closeModal(settingModal));
+    shopClose.addEventListener("click", () => closeModal(shopModal));
+
+    window.addEventListener("click", (e) => {
+        if (e.target == settingModal) closeModal(settingModal);
+        if (e.target == shopModal) closeModal(shopModal);
     });
-
-    closeBtn.addEventListener("click", () => {
-        modal_container.style.display = "none";
-    });
-
-    window.addEventListener("click", (e) =>{
-        if(e.target === modal_container) {
-            modal_container.style.display = "none";
-        }
-    });  
 });

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const fontButton = document.querySelector(".font");
     const textElements = document.querySelectorAll("h2, span, label, .text, #timer, #coins div, .label, .modal-content, .option");
-    const modal = document.querySelector(".modal-content");
+    const modals = document.querySelectorAll(".modal-content, .settings-modal");
     const header = document.querySelector("#header");
     const timer = document.querySelector("#timer");
     const coins = document.querySelector("#coins");
@@ -28,14 +28,19 @@ document.addEventListener("DOMContentLoaded", () => {
             el.style.fontSize = newSize;
         });
 
-        modal.style.width = `${300 + currentIndex * 50}px`;
-        modal.style.padding = `${20 + currentIndex * 5}px`;
+        modals.forEach(modal => {
+            modal.style.width = `${300 + currentIndex * 50}px`;
+            modal.style.padding = `${20 + currentIndex * 5}px`;
+            modal.style.height = "auto";
+            modal.style.minHeight = `${200 + currentIndex * 30}px`;
+            modal.style.overflow = "auto";
+        });
 
         header.style.height = newHeaderHeight;
         timer.style.fontSize = newSize;
         coins.style.fontSize = newSize;
 
-        const labels = modal.querySelectorAll(".label");
+        const labels = document.querySelectorAll(".label");
         labels.forEach(label => {
             label.style.position = "relative";
             label.style.left = newLabelOffset;
