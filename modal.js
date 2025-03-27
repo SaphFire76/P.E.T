@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const shopModal = document.getElementById("shopModal");
     const shopClose = shopModal.querySelector(".close");
 
+    const timerBtn = document.getElementById("timerBtn");
+    const timerModal = document.getElementById("timerModal");
+    const timerClose = shopModal.querySelector(".close");
+
     function openModal(modal) {
         modal.style.display = "flex";
     }
@@ -17,12 +21,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
     settingBtn.addEventListener("click", () => openModal(settingModal));
     shopBtn.addEventListener("click", () => openModal(shopModal));
+    timerBtn.addEventListener("click", () => openModal(timerModal));
 
     settingClose.addEventListener("click", () => closeModal(settingModal));
     shopClose.addEventListener("click", () => closeModal(shopModal));
+    timerClose.addEventListener("click", () => openModal(timerModal));
 
     window.addEventListener("click", (e) => {
-        if (e.target == settingModal) closeModal(settingModal);
-        if (e.target == shopModal) closeModal(shopModal);
+        if(e.target == settingModal) closeModal(settingModal);
+        if(e.target == shopModal) closeModal(shopModal);
+        if(e.target == timerModal) closeModal(timerModal); 
     });
 });

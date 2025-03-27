@@ -60,9 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
         applyFontSize();
     });
 
-    fontContainer.style.display = "flex";
-    fontContainer.style.flexDirection = "column";
-    fontContainer.style.alignItems = "flex-start";
+    //fontContainer.style.display = "flex";
+    //fontContainer.style.flexDirection = "column";
+    //fontContainer.style.alignItems = "flex-start";
 
     sliderContainer.forEach(container => {
         container.style.marginBottom = "10px";
