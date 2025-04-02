@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const coins = document.querySelector("#coins");
     const sliders = document.querySelectorAll(".slider");
     const sliderContainer = document.querySelectorAll(".toggle");
-    const fontContainer = document.querySelector(".font-container");
 
     const originalFontSize = parseFloat(window.getComputedStyle(textElements[0]).fontSize) || 16;
     const fontSizes = [1, 1.2, 1.5, 2, 2.5];
@@ -34,6 +33,16 @@ document.addEventListener("DOMContentLoaded", () => {
             modal.style.height = "auto";
             modal.style.minHeight = `${200 + currentIndex * 30}px`;
             modal.style.overflow = "auto";
+
+            if(modal.classList.contains("timer-modal")){
+                const timerItem = modal.querySelectorAll(".timer-item");
+                timerItem.forEach(item => {
+                    item.style.width = `${110 + currentIndex * 20}px`;
+                    item.style.height = `${50 + currentIndex * 10}px`;
+                });
+                
+            }
+
         });
 
         header.style.height = newHeaderHeight;
@@ -59,10 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("fontSizeIndex", currentIndex);
         applyFontSize();
     });
-
-    //fontContainer.style.display = "flex";
-    //fontContainer.style.flexDirection = "column";
-    //fontContainer.style.alignItems = "flex-start";
 
     sliderContainer.forEach(container => {
         container.style.marginBottom = "10px";

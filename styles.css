@@ -201,11 +201,11 @@
 
 /* Footer Options */
 
-.dark-mode #settingBtn img, .dark-mode #shopBtn img, .dark-mode #timerBtn img{
+.dark-mode #settingBtn img, .dark-mode #shopBtn img, .dark-mode #timerBtn img, .dark-mode #hangerBtn img{
     filter: invert(1);
 }
 
-#settingBtn, #shopBtn, #timerBtn {
+#settingBtn, #shopBtn, #timerBtn, #hangerBtn {
     margin: 0;
     width: 29px;
     height: 50px;
@@ -250,7 +250,12 @@
         transform: translate3d(2px, 0, 0);
     }
 }
-  
+ 
+#hangerBtn:hover{
+    transform: rotateY(180deg);
+    width: 50px;
+    transition: transform 0.8s;
+}
 
 .modal {
     display: none;
@@ -501,10 +506,13 @@ input:focus + .slider {
 .timer-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 15px;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
 
     background-color: var(--clr-light);
     color: var(--clr-dark);
@@ -515,9 +523,12 @@ input:focus + .slider {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
     cursor: pointer;
-    width: 110px;
-    height: 50px;
+    max-width: 120px;
+    width: auto;
+    height: auto;
+    padding: 10px;
     border: 2px solid black;
     border-radius: 10px;
     transition: transform 0.3s, box-shadow 0.3s;

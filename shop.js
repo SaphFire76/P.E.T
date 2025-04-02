@@ -53,10 +53,15 @@ document.addEventListener("DOMContentLoaded", function(){
             updateCoinsDispay();
 
             player.inventory.push(item.id);
+            localStorage.setItem("playerInventory", JSON.stringify(player.inventory));
 
             renderShopItem();
-
             showMessage(`Purchased ${item.name}!`, "success");
+
+            if(item.id == "tophat" || item.id== "scarf"){
+                initWardrobe();
+            }
+
         } else{
             showMessage("Insufficient Coins", "error");
         }

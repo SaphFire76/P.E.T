@@ -11,6 +11,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const timerModal = document.getElementById("timerModal");
     const timerClose = timerModal.querySelector(".close");
 
+    const hangerBtn = document.getElementById("hangerBtn");
+    const hangerModal = document.getElementById("hangerModal");
+    const hangerClose = hangerModal.querySelector(".close");
+
     function openModal(modal) {
         modal.style.display = "flex";
     }
@@ -22,10 +26,12 @@ document.addEventListener("DOMContentLoaded", function() {
     settingBtn.addEventListener("click", () => openModal(settingModal));
     shopBtn.addEventListener("click", () => openModal(shopModal));
     timerBtn.addEventListener("click", () => openModal(timerModal));
+    hangerBtn.addEventListener("click", () => openModal(hangerModal));
 
     settingClose.addEventListener("click", () => closeModal(settingModal));
     shopClose.addEventListener("click", () => closeModal(shopModal));
     timerClose.addEventListener("click", () => closeModal(timerModal));
+    hangerClose.addEventListener("click", () => closeModal(hangerModal));
 
     window.addEventListener("click", (e) => {
         if(e.target == settingModal) closeModal(settingModal);
