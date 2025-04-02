@@ -37,5 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
         if(e.target == settingModal) closeModal(settingModal);
         if(e.target == shopModal) closeModal(shopModal);
         if(e.target == timerModal) closeModal(timerModal); 
+        if(e.target == hangerModal) closeModal(hangerModal);
     });
 });
