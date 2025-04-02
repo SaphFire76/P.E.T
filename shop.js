@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
     const player ={
-        coins: 50,
-        inventory: []
+        coins: 100,
+        inventory: JSON.parse(localStorage.getItem("playerInventory")) ||[]
     };
 
     const shopItems = [
@@ -59,10 +59,8 @@ document.addEventListener("DOMContentLoaded", function(){
             showMessage(`Purchased ${item.name}!`, "success");
 
             if(item.id == "tophat" || item.id== "scarf"){
-                initWardrobe();
             }
-
-        } else{
+        }else{
             showMessage("Insufficient Coins", "error");
         }
         
@@ -89,4 +87,11 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     shopinit();
+   
+    // RESET LOCAL STORAGE //
+    /*
+    localStorage.removeItem("playerInventory");
+    localStorage.removeItem("selectedOutfit");
+    location.reload();
+    */
 });

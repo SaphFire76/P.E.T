@@ -1,52 +1,74 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     const outfits = [
-        { src: "cat.png", name: "Normal Cat", locked: false },
-        { src: "tophatCat.png", name: "Top Hat Cat", locked: true },
-        { src: "scarfCat.png", name: "Scarf Cat", locked: true }
+        {src:"cat.png", id:"normal", name:"Normal Cat", locked:false},
+        {src:"tophatCat.png", id:"tophat", name:"Tophat Cat", locked:true},
+        {src:"scarfCat.png", id:"scarf", name:"Scarf Cat", locked:true}
     ];
 
     let currentIndex = 0;
-    let coins = 15; // Example starting balance
-
-    // Retrieve purchased outfits from localStorage
-    const purchasedOutfits = JSON.parse(localStorage.getItem("purchasedOutfits")) || [];
-
-    // Unlock outfits if purchased
-    outfits.forEach(outfit => {
-        if (purchasedOutfits.includes(outfit.name)) {
-            outfit.locked = false;
-        }
-    });
-
     const currentOutfitImg = document.getElementById("currentOutfit");
     const outfitStatus = document.getElementById("outfitStatus");
-    const prevBtn = document.getElementById("prevOutfit");
-    const nextBtn = document.getElementById("nextOutfit");
     const selectBtn = document.getElementById("selectOutfit");
-    const mainCatImg = document.querySelector(".catbtn img"); // Main space cat
+    const mainCatImg = document.querySelector(".catbtn img");
+    const previousBtn = document.querySelector(".previousOutfit");
+    const nextBtn = document.querySelector(".nextOutfit")
 
-    function updateOutfitDisplay() {
-        currentOutfitImg.src = outfits[currentIndex].src;
-        outfitStatus.textContent = outfits[currentIndex].locked ? "Locked" : outfits[currentIndex].name;
-        selectBtn.disabled = outfits[currentIndex].locked;
+    function checkPurchase(){
+        const purchaseItem = JSON.parse(localStorage.getItem("playerInventory")) || [];
+
+        outfits.forEach(outfit => {
+            if(purchaseItem.includes(outfit.id)){
+                outfit.locked = false;
+            }
+        });
     }
 
-    prevBtn.addEventListener("click", function () {
+    function updateOutfitDisplay(){
+        const currentOutfit = outfits[currentIndex];
+        currentOutfitImg.src= currentOutfit.src;
+
+        if(currentOutfit.locked){
+            outfitStatus.textContent = "Locked - (Purchasable in shop)";
+            outfitStatus.style.color = "#C70039";
+            selectBtn.disabled = true;
+            currentOutfitImg.style.filter = "grayscale(100%)";
+            currentOutfitImg.style.opacity = "0.5";
+        }else{
+            outfitStatus.textContent = currentOutfit.name;
+            outfitStatus.style.color = "#8CBD8C";
+            selectBtn.disabled = false;
+            currentOutfitImg.style.filter = "none";
+            currentOutfitImg.style.opacity = "1";
+        }
+    }
+
+    previousBtn.addEventListener("click", function(){
         currentIndex = (currentIndex - 1 + outfits.length) % outfits.length;
         updateOutfitDisplay();
-    });
+    });  
 
-    nextBtn.addEventListener("click", function () {
+    nextBtn.addEventListener("click", function(){
         currentIndex = (currentIndex + 1) % outfits.length;
         updateOutfitDisplay();
     });
 
-    selectBtn.addEventListener("click", function () {
-        if (!outfits[currentIndex].locked) {
-            mainCatImg.src = outfits[currentIndex].src; // Change main cat image
-            alert(`You have selected ${outfits[currentIndex].name}!`);
+    selectBtn.addEventListener("click", function(){
+        if(!outfits[currentIndex].locked){
+            mainCatImg.src = outfits[currentIndex].src;
+            localStorage.setItem("selectedOutfit", outfits[currentIndex].src);
+        
+            document.getElementById("hangerModal").style.display= "none";
         }
     });
 
-    updateOutfitDisplay();
+    document.getElementById("hangerBtn").addEventListener("click",function(){
+        checkPurchase();
+        updateOutfitDisplay();
+    });
+
+    const savedOutfit = localStorage.getItem("selectedOutfit");
+    if(savedOutfit){
+        mainCatImg.src = savedOutfit;
+    }
+
 });

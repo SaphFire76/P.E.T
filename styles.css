@@ -602,3 +602,82 @@ input:focus + .slider {
     border-radius: 10px;
     font-size: 40px;
 }
+
+/* Wardrobe Outfits */
+.hanger-modal .modal-content{
+    width: 400px !important;
+    height: auto !important;
+}
+
+.outfitSelector{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+}
+
+.outfitDisplay{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+}
+
+.outfitDisplay img{
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.previousOutfit, .nextOutfit{
+    border: 2px solid var(--clr-dark);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+}
+
+.previousOutfit:hover, .nextOutfit:hover{
+    background-color: var(--clr-dark);
+    color: var(--clr-light);
+}
+
+#selectOutfit{
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#selectOutfit:disabled{
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+#outfitStatus{
+    font-size: 15px;
+    margin-top: 5px;
+    font-weight: bold;
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+}
