@@ -201,11 +201,11 @@
 
 /* Footer Options */
 
-.dark-mode #settingBtn img, .dark-mode #shopBtn img, .dark-mode #timerBtn img, .dark-mode #hangerBtn img{
+.dark-mode #settingBtn img, .dark-mode #shopBtn img, .dark-mode #timerBtn img, .dark-mode #hangerBtn img, .dark-mode #loginBtn img{
     filter: invert(1);
 }
 
-#settingBtn, #shopBtn, #timerBtn, #hangerBtn {
+#settingBtn, #shopBtn, #timerBtn, #hangerBtn, #loginBtn {
     margin: 0;
     width: 29px;
     height: 50px;

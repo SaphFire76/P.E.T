@@ -15,28 +15,35 @@ document.addEventListener("DOMContentLoaded", function() {
     const hangerModal = document.getElementById("hangerModal");
     const hangerClose = hangerModal.querySelector(".close");
 
+    const loginBtn = document.getElementById("loginBtn");
+    const loginModal = document.getElementById("loginModal");
+    const loginClose = loginModal.querySelector(".close");
+
     function openModal(modal) {
-        modal.style.display = "flex";
+        modal.style.display = "flex"; 
     }
 
     function closeModal(modal) {
-        modal.style.display = "none";
+        modal.style.display = "none"; 
     }
 
     settingBtn.addEventListener("click", () => openModal(settingModal));
     shopBtn.addEventListener("click", () => openModal(shopModal));
     timerBtn.addEventListener("click", () => openModal(timerModal));
     hangerBtn.addEventListener("click", () => openModal(hangerModal));
+    loginBtn.addEventListener("click", () => openModal(loginModal)); 
 
     settingClose.addEventListener("click", () => closeModal(settingModal));
     shopClose.addEventListener("click", () => closeModal(shopModal));
     timerClose.addEventListener("click", () => closeModal(timerModal));
     hangerClose.addEventListener("click", () => closeModal(hangerModal));
+    loginClose.addEventListener("click", () => closeModal(loginModal));
 
     window.addEventListener("click", (e) => {
         if(e.target == settingModal) closeModal(settingModal);
         if(e.target == shopModal) closeModal(shopModal);
         if(e.target == timerModal) closeModal(timerModal); 
         if(e.target == hangerModal) closeModal(hangerModal);
+        if(e.target == loginModal) closeModal(loginModal);
     });
 });
