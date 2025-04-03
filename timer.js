@@ -43,6 +43,9 @@ function startTimer(){
     if(totalMinutes == 0){ 
         return;
     }
+    if (window.soundControls && window.soundControls.startSound) {
+        window.soundControls.startSound();
+    }
     timerOptionBtn.forEach(button => {
         button.disabled = true;
     });
@@ -109,6 +112,9 @@ function runTimer(endTime){
                 timerOptionBtn.forEach(button => {
                     button.disabled = false;
                 });
+                if (window.soundControls && window.soundControls.stopSound) {
+                    window.soundControls.stopSound();
+                }
             }
         }
     }
