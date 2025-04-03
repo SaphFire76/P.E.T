@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
-    const player ={
-        coins: localStorage.getItem("playerCoins"),
-        inventory: JSON.parse(localStorage.getItem("playerInventory")) ||[]
+    const player = {
+        coins: parseInt(localStorage.getItem("playerCoins")) || 0,
+        inventory: JSON.parse(localStorage.getItem("playerInventory")) || []
     };
 
     const shopItems = [
@@ -21,8 +21,9 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     function updateCoinsDisplay(){
-        if(coinsDisplay){
+        if (coinsDisplay) {
             coinsDisplay.textContent = player.coins;
+            localStorage.setItem("playerCoins", player.coins);
         }
     }
 
@@ -32,23 +33,22 @@ document.addEventListener("DOMContentLoaded", function(){
         shopItems.forEach(item => {
             const owned = player.inventory.includes(item.id);
             const itemElement = document.createElement("button");
-            itemElement.className= `shop-item ${owned ? "owned": ''}`;
+            itemElement.className = `shop-item ${owned ? "owned" : ''}`;
             itemElement.dataset.id = item.id;
             itemElement.innerHTML = `<img src="${item.image}" alt="${item.name}"> 
             <span class="price"> ${item.price} Coins</span>
             ${owned ? '<span class="owned-label">Owned</span>' : ''}`;
 
-            if(!owned){
-                itemElement.addEventListener("click", ()=> purchaseItem(item));
+            if (!owned) {
+                itemElement.addEventListener("click", () => purchaseItem(item));
             }
 
             shopGrid.appendChild(itemElement);
-
         });
     }
 
     function purchaseItem(item){
-        if(player.coins >= item.price){
+        if (player.coins >= item.price) {
             player.coins -= item.price;
             updateCoinsDisplay();
 
@@ -57,18 +57,14 @@ document.addEventListener("DOMContentLoaded", function(){
 
             renderShopItem();
             showMessage(`Purchased ${item.name}!`, "success");
-
-            if(item.id == "tophat" || item.id== "scarf"){
-            }
-        }else{
+        } else {
             showMessage("Insufficient Coins", "error");
         }
-        
     }
 
     function showMessage(text, type){
         const existingMessage = document.querySelector(".shop-message");
-        if(existingMessage){
+        if (existingMessage) {
             existingMessage.remove();
         }
             
@@ -77,22 +73,22 @@ document.addEventListener("DOMContentLoaded", function(){
         message.textContent = text;
 
         const modalContent = shopModal.querySelector(".modal-content");
-        if(modalContent){
+        if (modalContent) {
             modalContent.insertBefore(message, modalContent.firstChild);
         }
 
-        setTimeout(() =>{
+        setTimeout(() => {
             message.remove();
-        }, 3000)
+        }, 3000);
     }
 
     shopinit();
-   
+
     // RESET LOCAL STORAGE //
     /*
     localStorage.removeItem("playerInventory");
     localStorage.removeItem("selectedOutfit");
     localStorage.removeItem("playerCoins")
     location.reload();
-    */      
+    */
 });
