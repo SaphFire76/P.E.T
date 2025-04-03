@@ -10,6 +10,8 @@ var circle = document.getElementById('countdown_svg').children[0];
 let playerCoins = parseInt(localStorage.getItem("playerCoins")) || 0;
 const coinsDisplay = document.querySelector("#coins #header1");
 
+const timerOptionBtn = document.querySelectorAll(".timer-item");
+
 
 const timerOptions = {
     "10 Minutes": 10,
@@ -38,6 +40,10 @@ function startTimer() {
         return;
     }
     */
+
+    timerOptionBtn.forEach(button => {
+        button.disabled = true;
+    });
 
     const startTime = Date.now();
     const endTime = startTime + timerDuration * 10;
@@ -78,6 +84,10 @@ function runTimer(endTime) {
             timerDisplay.textContent = "TIME'S UP!";
             circle.style.strokeDashoffset = '0';
 
+            timerOptionBtn.forEach(button => {
+                button.disabled = false;
+            });
+
             button.disabled = false;
             //localStorage.removeItem("timerEndTime");
             //localStorage.removeItem("timerDuration");
@@ -100,12 +110,14 @@ function giveCoins() {
 }
 
 function setTimerDuration(minutes){
-    duration = minutes;
-    timerDuration = duration * 6000;
-    updateTimerDisplay();
-
-    const timerModal = document.getElementById("timerModal");
-    timerModal.style.display = "none";
+    if(!button.disabled){
+        duration = minutes;
+        timerDuration = duration * 6000;
+        updateTimerDisplay();
+        
+        const timerModal = document.getElementById("timerModal");
+        timerModal.style.display = "none";
+    }
 }
 
 function timerOption(){
