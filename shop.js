@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(){
     const player ={
-        coins: 100,
+        coins: 0,
         inventory: JSON.parse(localStorage.getItem("playerInventory")) ||[]
     };
 
@@ -92,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function(){
     /*
     localStorage.removeItem("playerInventory");
     localStorage.removeItem("selectedOutfit");
+    localStorage.removeItem("playerCoins")
     location.reload();
-    */
+    */  
 });
