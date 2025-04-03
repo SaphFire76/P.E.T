@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(){
     const player ={
-        coins: 0,
+        coins: localStorage.getItem("playerCoins"),
         inventory: JSON.parse(localStorage.getItem("playerInventory")) ||[]
     };
 
@@ -16,11 +16,11 @@ document.addEventListener("DOMContentLoaded", function(){
     const shopModal = document.getElementById("shopModal");
 
     function shopinit(){
-        updateCoinsDispay();
+        updateCoinsDisplay();
         renderShopItem();
     }
 
-    function updateCoinsDispay(){
+    function updateCoinsDisplay(){
         if(coinsDisplay){
             coinsDisplay.textContent = player.coins;
         }
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function(){
     function purchaseItem(item){
         if(player.coins >= item.price){
             player.coins -= item.price;
-            updateCoinsDispay();
+            updateCoinsDisplay();
 
             player.inventory.push(item.id);
             localStorage.setItem("playerInventory", JSON.stringify(player.inventory));
@@ -94,5 +94,5 @@ document.addEventListener("DOMContentLoaded", function(){
     localStorage.removeItem("selectedOutfit");
     localStorage.removeItem("playerCoins")
     location.reload();
-    */  
+    */      
 });
