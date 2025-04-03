@@ -38,9 +38,11 @@ function updateTimerDisplay() {
 
 function startTimer() {
 
+    /*
     if(localStorage.getItem("timerEndTime")){
         return;
     }
+    */
 
     const startTime = Date.now();
     const endTime = startTime + timerDuration * 10; // Store end time in milliseconds
@@ -48,15 +50,17 @@ function startTimer() {
 
     button.disabled = true; // Disable the button while the timer is running
     const endTime = startTime + timerDuration * 10;
-    localStorage.setItem("timerEndTime", endTime);
-    localStorage.setItem("timerDuration", duration);
+    //localStorage.setItem("timerEndTime", endTime);
+    //localStorage.setItem("timerDuration", duration);
 
-    runTimer();
+    button.disabled = true;
+    runTimer(endTime);
 }
 
-function runTimer() {
-    clearInterval(countdown); // Clear any existing timer
+function runTimer(endTime) {
+    clearInterval(countdown);
 
+    /*
     const endTime = localStorage.getItem("timerEndTime");
     if (!endTime) return; // Exit if there's no stored timer
 
@@ -65,6 +69,7 @@ function runTimer() {
         duration = parseFloat(storedDuration);
         timerDuration = duration*6000;
     }
+    */
 
     function updateTimer() {
         const currentTime = Date.now();
@@ -83,11 +88,9 @@ function runTimer() {
             circle.style.strokeDashoffset = '0';
 
             button.disabled = false;
-            localStorage.removeItem("timerEndTime"); // Clear the saved timer
-            localStorage.removeItem("timerEndTime");
-            localStorage.removeItem("timerDuration");
-
-            giveCoins(); // Give coins when the timer ends
+            //localStorage.removeItem("timerEndTime");
+            //localStorage.removeItem("timerDuration");
+            giveCoins();
         }
     }
 
@@ -134,7 +137,10 @@ window.onload = () => {
     if (localStorage.getItem("timerEndTime")) {
         runTimer(); // Resume the timer
         button.disabled = true; // Keep the button disabled
-function setTimerDuraction(minutes){
+    }
+}
+
+function setTimerDuration(minutes){
     duration = minutes;
     timerDuration = duration * 6000;
     updateTimerDisplay();
@@ -149,7 +155,7 @@ function timerOption(){
         const optionText = item.querySelector(".timer-options").textContent;
         const minutes = timerOptions[optionText];
         item.addEventListener("click",() => {
-            setTimerDuraction(minutes);
+            setTimerDuration(minutes);
         });
 
     });
@@ -158,10 +164,13 @@ function timerOption(){
 window.onload = () => {
     updateCoinsDisplay(); 
     timerOption();
+    updateTimerDisplay();
+    /*
     if(localStorage.getItem("timerEndTime")) {
         runTimer(); 
         button.disabled = true;
     }else{
         updateTimerDisplay();
     }
+    */
 };
