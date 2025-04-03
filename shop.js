@@ -1,33 +1,55 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
+    // Initialize the player object
     const player = {
-        coins: parseInt(localStorage.getItem("playerCoins")) || 0,
+        coins: isLoggedIn ? parseInt(coins) : (parseInt(localStorage.getItem("playerCoins")) || 0),
         inventory: JSON.parse(localStorage.getItem("playerInventory")) || []
     };
 
     const shopItems = [
-        {id:"petfood", name:"Pet Food", price: 5, image:"petfood.png"},
-        {id:"water", name:"Water", price: 3, image:"waterbottle.png"},
-        {id:"tophat", name:"Top Hat", price: 60, image:"tophat.png"},
-        {id:"scarf", name:"Scarf", price: 15, image:"scarf.png"}
+        { id: "petfood", name: "Pet Food", price: 5, image: "petfood.png" },
+        { id: "water", name: "Water", price: 3, image: "waterbottle.png" },
+        { id: "tophat", name: "Top Hat", price: 60, image: "tophat.png" },
+        { id: "scarf", name: "Scarf", price: 15, image: "scarf.png" }
     ];
 
     const coinsDisplay = document.querySelector("#coins #header1");
     const shopGrid = document.querySelector(".shop-grid");
     const shopModal = document.getElementById("shopModal");
 
-    function shopinit(){
+    function shopinit() {
         updateCoinsDisplay();
         renderShopItem();
     }
 
-    function updateCoinsDisplay(){
+    function updateCoinsDisplay() {
         if (coinsDisplay) {
-            coinsDisplay.textContent = player.coins;
-            localStorage.setItem("playerCoins", player.coins);
+            coinsDisplay.textContent = player.coins; // Update the header with the correct coin value
+            console.log("Coins Display Updated:", player.coins); // Debugging line
+            //localStorage.setItem("playerCoins", player.coins);
+
+            // Update the database if the user is logged in
+            if (isLoggedIn) {
+                localStorage.removeItem("playerCoins"); // Clear outdated data
+                console.log("Updating coins in the database:", player.coins); // Debugging line
+                fetch('update_coins.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `coins=${player.coins}`
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.success) {
+                            console.error("Failed to update coins in the database:", data.error);
+                        }
+                    })
+                    .catch(error => console.error("Error updating coins:", error));
+            }
         }
     }
 
-    function renderShopItem(){
+    function renderShopItem() {
         shopGrid.innerHTML = "";
 
         shopItems.forEach(item => {
@@ -47,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function(){
         });
     }
 
-    function purchaseItem(item){
+    function purchaseItem(item) {
         if (player.coins >= item.price) {
             player.coins -= item.price;
             updateCoinsDisplay();
@@ -62,12 +84,12 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     }
 
-    function showMessage(text, type){
+    function showMessage(text, type) {
         const existingMessage = document.querySelector(".shop-message");
         if (existingMessage) {
             existingMessage.remove();
         }
-            
+
         const message = document.createElement("div");
         message.className = `shop-message ${type}`;
         message.textContent = text;

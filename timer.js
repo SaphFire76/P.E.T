@@ -49,6 +49,8 @@ function startTimer() {
     const endTime = startTime + timerDuration * 10;
     //localStorage.setItem("timerEndTime", endTime);
     //localStorage.setItem("timerDuration", duration);
+    button.disabled = true; // Disable the button while the timer is running
+    
 
     button.disabled = true;
     runTimer(endTime);

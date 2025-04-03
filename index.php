@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="styles.css">
     <script src="timer.js" defer></script>
 </head>
-<body>
-    <!-- PHP code to fetch user data -->
+    <body>
+
+            <!-- PHP code to fetch user data -->
     <?php
     session_start();
     $conn = new mysqli('localhost', 'root', '', 'p.e.t database');
@@ -24,25 +25,33 @@
         if ($result->num_rows > 0) {
             $user = $result->fetch_assoc();
             $coins = $user['currency'];
+            $isLoggedIn = true; // User is logged in
         } else {
             $coins = 15; // Default value if user not found
+            $isLoggedIn = false; // User not found in database
             }
     } else {
         $coins = 15; // Default value if user not logged in
+        $isLoggedIn = false; // User not logged in
     }
 
     $conn->close();
     ?>
     <script>
-      //const firstName = "<?php echo $user['firstName'];?>";
+      const firstName = "<?php echo $user['firstName'];?>";
       const lastName = "<?php echo $user['lastName'];?>";
-      const coins = (<?php echo $coins; ?>);        // Assign PHP variables to JavaScript variables
+      const coins = (<?php echo json_encode($coins); ?>);        // Assign PHP variables to JavaScript variables
+      const isLoggedIn = <?php echo json_encode($isLoggedIn); ?>; // Check if user is logged in
+      const userId = <?php echo json_encode($userId); ?>; // Get user ID from PHP
       window.addEventListener('beforeunload', function() {
-        fetch('logout.php', { method: 'POST' });    // Logout user when tab is closed
+        if (isLoggedIn) {
+          fetch('logout.php', { method: 'POST', body: JSON.stringify({ userId: userId }) }); // Logout user when tab is closed
+        }
          
       });
     </script>
-    <!-- UI -->
+        <!-- UI -->
+        
         <!-- UI -->
         <div class="body">
 
@@ -53,7 +62,7 @@
                 <div class="header" id="header1" style="display: flex; justify-content: flex-end;">
                     <div id="coins">
                         <img style="height: 2em; background-color: transparent;" src="Coin.png"> 
-                        <div id="header1"><?php echo $coins ?></div>
+                        <div id="header1"></div>
                     </div>
                 </div>
             </div>
@@ -79,14 +88,23 @@
                     <img style="background-color: transparent; width: inherit;" src="shop.png" alt="Shop">
                 </button>
 
+                <button id="hangerBtn">
+                    <img style="background-color: transparent; width: inherit;" src="hanger.png" alt="Shop">
+                </button>
+
                 <!-- Timer -->
-                 <button id="timerBtn">
+                <button id="timerBtn">
                     <img style="background-color: transparent; width: inherit;" src="timer.png" alt="Timer">
-                 </button>
+                </button>
 
                 <!-- Settings -->
                 <button id="settingBtn">
                     <img style="background-color: transparent; width: inherit;" src="settingsIcon.png" alt="Settings">
+                </button>
+
+                <!-- Login Button (New) -->
+                <button id="loginBtn">
+                    <img style="background-color: transparent; width: inherit;" src="login.png" alt="Login">
                 </button>
             </div>
         </div>
@@ -118,6 +136,23 @@
             </div>
         </div>
 
+        <div id="hangerModal" class="modal hanger-modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="darkmodeH2">Wardrobe</h2>
+
+                <div class="outfitSelector">
+                    <button class="previousOutfit">&lt;</button>
+                    <div class="outfitDisplay">
+                        <img id="currentOutfit" src="cat.png" alt="Current Outfit">
+                        <div id="outfitStatus"></div>
+                    </div>
+                    <button class="nextOutfit">&gt;</button>
+                </div>
+                <button id="selectOutfit">Select Outfit</button>
+            </div>
+        </div>
+
         <!-- Timer Modal -->
         <div id="timerModal" class="modal timer-modal">
             <div class="modal-content">
@@ -142,6 +177,31 @@
         </div>
 
 
+           <!-- Login Modal -->
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="darkmodeH2">Login</h2>
+
+                <div class="login">
+                
+                    <button class="login-item">
+                        <a href="login.html">
+                        <span class="login-options">Login</span>
+                        
+                    </button>
+                    <button class="login-item">
+                        <a href="registration.html">
+                        <span class="login-options">Register</span>
+                    </button>
+                    <button class="login-item">
+                        <a href="logout.php">
+                        <span class="login-options">Logout</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <!-- Setting Modal -->
         <div id="settingModal" class="modal">
             <div class="modal-content">
@@ -157,58 +217,32 @@
                         </label>
                     </div>
 
-                    <div class="settingOptions">
-                        <div class="option">
-                            <label class="label">Dark Mode</label>
-                            <label class="toggle">
-                                <input type="checkbox" id="darkmodeToggle">
-                                <span class="slider"></span>
-                            </label>
-                        </div>
-
-                        <div class="settingOptions">
-                            <div class="option">
-                                <label class="label">Font</label>
-                                <button class="font">x1</button>
-                            </div>
-                        </div>
-
-                        <!-- Login Button -->
-                        <div class="settingOptions">
-                            <div class="option">
-                                <label class="label">Login</label>
-                                <a href="login.html">
-                                    <button class="font">Go to Login</button>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Registration Button -->
-                        <div class="settingOptions">
-                            <div class="option">
-                                <label class="label">Register</label>
-                                <a href="registration.html">
-                                    <button class="font">Go to Register</button>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Logout Button -->
-                        <div class="settingOptions">
-                            <div class="option">
-                                <label class="label">Logout</label>
-                                <form action="logout.php" method="POST" style="display: inline;">
-                                    <button type="submit" class="font">Logout</button>
-                                </form>
-                            </div>
-                        </div>
+                <div class="settingOptions">
+                    <div class="option">
+                        <label class="label">Dark Mode</label>
+                        <label class="toggle">
+                            <input type="checkbox" id="darkmodeToggle">
+                            <span class="slider"></span>
+                        </label>
                     </div>
+
+                <div class="settingOptions">
+                    <div class="option">
+                        <label class="label">Font</label>
+                        <button class="font">x1</button>
+                        </label>
+                    </div>
+                </div>
+
                 </div>
             </div>
         </div>
 
+        <!-- Scripts -->
         <script src="modal.js"></script>
         <script src="darkmode.js"></script>
         <script src="font.js"></script>
+        <script src="shop.js"></script>
+        <script src="hanger.js"></script>
     </body>
 </html>
