@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(){
         {id:"petfood", name:"Pet Food", price: 5, image:"petfood.png"},
         {id:"water", name:"Water", price: 3, image:"waterbottle.png"},
         {id:"tophat", name:"Top Hat", price: 60, image:"tophat.png"},
-        {id:"scarf", name:"Scarg", price: 15, image:"scarf.png"}
+        {id:"scarf", name:"Scarf", price: 15, image:"scarf.png"}
     ];
 
     const coinsDisplay = document.querySelector("#coins #header1");
