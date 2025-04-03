@@ -12,6 +12,14 @@ let playerCoins = parseInt(localStorage.getItem("playerCoins")) || 100;
 //let playerCoins = coins; //intialise playerCoins with coins from the database;
 const coinsDisplay = document.querySelector("#coins #header1");
 
+
+const timerOptions = {
+    "10 Minutes": 10,
+    "20 Minutes": 20,
+    "30 Mintues": 30,
+    "1 Hour": 60
+}
+
 function updateCoinsDisplay() {
     if (coinsDisplay) {
         coinsDisplay.textContent = playerCoins;
@@ -22,13 +30,26 @@ function updateCoinsDisplay() {
 // Set initial timer display
 let minutes = Math.floor(duration);
 timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:00`;
+function updateTimerDisplay() {
+    let minutes = Math.floor(duration);
+    let seconds = Math.floor((duration - minutes) * 60);
+    timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
 
 function startTimer() {
+
+    if(localStorage.getItem("timerEndTime")){
+        return;
+    }
+
     const startTime = Date.now();
     const endTime = startTime + timerDuration * 10; // Store end time in milliseconds
     localStorage.setItem("timerEndTime", endTime); // Save to localStorage
 
     button.disabled = true; // Disable the button while the timer is running
+    const endTime = startTime + timerDuration * 10;
+    localStorage.setItem("timerEndTime", endTime);
+    localStorage.setItem("timerDuration", duration);
 
     runTimer();
 }
@@ -38,6 +59,12 @@ function runTimer() {
 
     const endTime = localStorage.getItem("timerEndTime");
     if (!endTime) return; // Exit if there's no stored timer
+
+    const storedDuration = localStorage.getItem("timerDuration");
+    if(storedDuration){
+        duration = parseFloat(storedDuration);
+        timerDuration = duration*6000;
+    }
 
     function updateTimer() {
         const currentTime = Date.now();
@@ -57,6 +84,8 @@ function runTimer() {
 
             button.disabled = false;
             localStorage.removeItem("timerEndTime"); // Clear the saved timer
+            localStorage.removeItem("timerEndTime");
+            localStorage.removeItem("timerDuration");
 
             giveCoins(); // Give coins when the timer ends
         }
@@ -105,5 +134,34 @@ window.onload = () => {
     if (localStorage.getItem("timerEndTime")) {
         runTimer(); // Resume the timer
         button.disabled = true; // Keep the button disabled
+function setTimerDuraction(minutes){
+    duration = minutes;
+    timerDuration = duration * 6000;
+    updateTimerDisplay();
+
+    const timerModal = document.getElementById("timerModal");
+    timerModal.style.display = "none";
+}
+
+function timerOption(){
+    const timerItems = document.querySelectorAll(".timer-item");
+    timerItems.forEach(item =>{
+        const optionText = item.querySelector(".timer-options").textContent;
+        const minutes = timerOptions[optionText];
+        item.addEventListener("click",() => {
+            setTimerDuraction(minutes);
+        });
+
+    });
+}
+
+window.onload = () => {
+    updateCoinsDisplay(); 
+    timerOption();
+    if(localStorage.getItem("timerEndTime")) {
+        runTimer(); 
+        button.disabled = true;
+    }else{
+        updateTimerDisplay();
     }
 };

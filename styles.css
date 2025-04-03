@@ -250,6 +250,37 @@
         transform: translate3d(2px, 0, 0);
     }
 }
+
+#loginBtn:hover{ 
+    animation: wobble 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    perspective: 1000px;
+    width: 40px;
+}
+
+@keyframes wobble{
+    0%{ 
+        transform: translateX(0%); 
+    } 
+    15%{
+        transform: translateX(-25%) rotate(-5deg);
+    } 
+    30%{
+        transform: translateX(20%) rotate(3deg);
+    } 
+    45%{
+        transform: translateX(-15%) rotate(-3deg);
+    } 
+    60%{
+        transform: translateX(10%) rotate(2deg);
+    }
+    75%{
+        transform: translateX(-5%) rotate(-1deg);
+    }
+    100%{
+        transform: translateX(0%);
+    } 
+} 
  
 #hangerBtn:hover{
     transform: rotateY(180deg);
@@ -548,6 +579,55 @@ input:focus + .slider {
 }
 
 .timer-item:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Login */
+.login{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+}
+.login-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    max-width: 120px;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+}
+
+.login-item .login-options{
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+}
+
+.login-item:hover{
     transform: scale(1.1);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
