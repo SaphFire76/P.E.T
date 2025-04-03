@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Initialize the player object
     const player = {
-        coins: isLoggedIn ? parseInt(coins) : (parseInt(localStorage.getItem("playerCoins")) || 0),
+        coins: isLoggedIn ? parseInt(coins) : (parseInt(localStorage.getItem("playerCoins")) || 0), // Use database coins if logged in
         inventory: JSON.parse(localStorage.getItem("playerInventory")) || []
     };
 
@@ -16,16 +16,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const shopGrid = document.querySelector(".shop-grid");
     const shopModal = document.getElementById("shopModal");
 
+    console.log(isLoggedIn, coins); // Debugging line
+
     function shopinit() {
-        updateCoinsDisplay();
-        renderShopItem();
+        updateCoinsDisplay(); // Ensure coins are displayed immediately
+        renderShopItem(); // Render shop items
     }
 
     function updateCoinsDisplay() {
         if (coinsDisplay) {
             coinsDisplay.textContent = player.coins; // Update the header with the correct coin value
             console.log("Coins Display Updated:", player.coins); // Debugging line
-            //localStorage.setItem("playerCoins", player.coins);
 
             // Update the database if the user is logged in
             if (isLoggedIn) {
@@ -36,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    body: `coins=${player.coins}`
+                    body: `userId=${userId}&coins=${player.coins}` // Ensure userId is passed
                 })
                     .then(response => response.json())
                     .then(data => {
@@ -45,6 +46,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                     })
                     .catch(error => console.error("Error updating coins:", error));
+                    renderShopItem();
+            } else {
+                localStorage.setItem("playerCoins", player.coins); // Save to localStorage if not logged in
             }
         }
     }
@@ -107,10 +111,10 @@ document.addEventListener("DOMContentLoaded", function () {
     shopinit();
 
     // RESET LOCAL STORAGE //
-    /*
-    localStorage.removeItem("playerInventory");
-    localStorage.removeItem("selectedOutfit");
-    localStorage.removeItem("playerCoins")
-    location.reload();
-    */
+    
+    // localStorage.removeItem("playerInventory");
+    // localStorage.removeItem("selectedOutfit");
+    // localStorage.removeItem("playerCoins")
+    // location.reload();
+
 });

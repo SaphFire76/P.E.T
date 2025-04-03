@@ -7,17 +7,23 @@
     <link rel="stylesheet" href="styles.css">
     <script src="timer.js" defer></script>
 </head>
-    <body>
-
-            <!-- PHP code to fetch user data -->
+<body>
+    <!-- PHP code to fetch user data -->
     <?php
+    
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+
     session_start();
     $conn = new mysqli('localhost', 'root', '', 'p.e.t database');
     if ($conn->connect_error) {
         die("Connection Failed : " . $conn->connect_error);
     }
 
-    // Assuming user is logged in and user ID is stored in session
+    // Initialize isLoggedIn variable
+    $isLoggedIn = false;
+
+    // Check if user is logged in
     if (isset($_SESSION['user_id'])) {
         $userId = $_SESSION['user_id'];
         $result = $conn->query("SELECT * FROM `user information` WHERE id = $userId");
@@ -28,30 +34,21 @@
             $isLoggedIn = true; // User is logged in
         } else {
             $coins = 15; // Default value if user not found
-            $isLoggedIn = false; // User not found in database
-            }
+        }
     } else {
         $coins = 15; // Default value if user not logged in
-        $isLoggedIn = false; // User not logged in
     }
 
     $conn->close();
     ?>
     <script>
-      const firstName = "<?php echo $user['firstName'];?>";
-      const lastName = "<?php echo $user['lastName'];?>";
-      const coins = (<?php echo json_encode($coins); ?>);        // Assign PHP variables to JavaScript variables
-      const isLoggedIn = <?php echo json_encode($isLoggedIn); ?>; // Check if user is logged in
-      const userId = <?php echo json_encode($userId); ?>; // Get user ID from PHP
-      window.addEventListener('beforeunload', function() {
-        if (isLoggedIn) {
-          fetch('logout.php', { method: 'POST', body: JSON.stringify({ userId: userId }) }); // Logout user when tab is closed
-        }
-         
-      });
+        // Pass the isLoggedIn variable to JavaScript
+        const isLoggedIn = <?php echo json_encode($isLoggedIn); ?>;
+        const coins = <?php echo $coins; ?>; // Pass coins to JavaScript
     </script>
+    <!-- UI -->
         <!-- UI -->
-        
+        <body>
         <!-- UI -->
         <div class="body">
 
@@ -161,16 +158,16 @@
 
                 <div class="timer-grid">
                     <button class="timer-item">
-                        <span class="timer-options">10 Minutes</span>
-                    </button>
-                    <button class="timer-item">
-                        <span class="timer-options">20 Minutes</span>
-                    </button>
-                    <button class="timer-item">
                         <span class="timer-options">30 Minutes</span>
                     </button>
                     <button class="timer-item">
                         <span class="timer-options">1 Hour</span>
+                    </button>
+                    <button class="timer-item">
+                        <span class="timer-options">1.5 Hours</span>
+                    </button>
+                    <button class="timer-item">
+                        <span class="timer-options">2 Hours</span>
                     </button>
                 </div>
             </div>
@@ -184,19 +181,17 @@
                 <h2 id="darkmodeH2">Login</h2>
 
                 <div class="login">
-                
-                    <button class="login-item">
-                        <a href="login.html">
+                    <!-- Login Button -->
+                    <button class="login-item" onclick="window.location.href='login.html'">
                         <span class="login-options">Login</span>
-                        
                     </button>
-                    <button class="login-item">
-                        <a href="registration.html">
-                        <span class="login-options">Register</span>
-                    </button>
-                    <button class="login-item">
-                        <a href="logout.php">
+                    <!-- Logout Button -->
+                    <button class="login-item" onclick="window.location.href='logout.php'">
                         <span class="login-options">Logout</span>
+                    </button>
+                    <!-- Registration Button -->
+                    <button class="login-item" onclick="window.location.href='registration.html'">
+                        <span class="login-options">Register</span>
                     </button>
                 </div>
             </div>
