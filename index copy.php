@@ -25,11 +25,14 @@
         if ($result->num_rows > 0) {
             $user = $result->fetch_assoc();
             $coins = $user['currency'];
+            $isLoggedIn = true; // User is logged in
         } else {
             $coins = 15; // Default value if user not found
+            $isLoggedIn = false; // User not found in database
             }
     } else {
         $coins = 15; // Default value if user not logged in
+        $isLoggedIn = false; // User not logged in
     }
 
     $conn->close();
@@ -38,8 +41,12 @@
       const firstName = "<?php echo $user['firstName'];?>";
       const lastName = "<?php echo $user['lastName'];?>";
       const coins = (<?php echo json_encode($coins); ?>);        // Assign PHP variables to JavaScript variables
+      const isLoggedIn = <?php echo json_encode($isLoggedIn); ?>; // Check if user is logged in
+      const userId = <?php echo json_encode($userId); ?>; // Get user ID from PHP
       window.addEventListener('beforeunload', function() {
-        fetch('logout.php', { method: 'POST' });    // Logout user when tab is closed
+        if (isLoggedIn) {
+          fetch('logout.php', { method: 'POST', body: JSON.stringify({ userId: userId }) }); // Logout user when tab is closed
+        }
          
       });
     </script>
