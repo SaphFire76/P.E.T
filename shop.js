@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
         inventory: JSON.parse(localStorage.getItem("playerInventory")) || []
     };
 
+    //Array of items in shop
     const shopItems = [
         { id: "petfood", name: "Pet Food", price: 5, image: "petfood.png" },
         { id: "water", name: "Water", price: 3, image: "waterbottle.png" },
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: "scarf", name: "Scarf", price: 15, image: "scarf.png" }
     ];
 
+    //DOM elements
     const coinsDisplay = document.querySelector("#coins #header1");
     const shopGrid = document.querySelector(".shop-grid");
     const shopModal = document.getElementById("shopModal");
@@ -23,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         renderShopItem(); // Render shop items
     }
 
+    //Updates the coin display
     function updateCoinsDisplay() {
         if (coinsDisplay) {
             coinsDisplay.textContent = player.coins; // Update the header with the correct coin value
@@ -110,11 +113,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     shopinit();
 
-    // RESET LOCAL STORAGE //
-    
-    // localStorage.removeItem("playerInventory");
-    // localStorage.removeItem("selectedOutfit");
-    // localStorage.removeItem("playerCoins")
-    // location.reload();
-
+    // RESET LOCAL STORAGE (Console) //
+    /*
+    localStorage.removeItem("playerInventory");
+    localStorage.removeItem("selectedOutfit");
+    localStorage.removeItem("playerCoins")
+    location.reload();
+    */
 });

@@ -1,10 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
+    
+    //Array of outfits
     const outfits = [
         {src:"cat.png", id:"normal", name:"Normal Cat", locked:false},
         {src:"tophatCat.png", id:"tophat", name:"Tophat Cat", locked:true},
         {src:"scarfCat.png", id:"scarf", name:"Scarf Cat", locked:true}
     ];
 
+    //DOM elemetnts
     let currentIndex = 0;
     const currentOutfitImg = document.getElementById("currentOutfit");
     const outfitStatus = document.getElementById("outfitStatus");
@@ -13,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const previousBtn = document.querySelector(".previousOutfit");
     const nextBtn = document.querySelector(".nextOutfit")
 
+    //Checks if the item is purchased and in player inventory
     function checkPurchase(){
         const purchaseItem = JSON.parse(localStorage.getItem("playerInventory")) || [];
 
@@ -23,10 +27,12 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    //Updates the currentt outfits
     function updateOutfitDisplay(){
         const currentOutfit = outfits[currentIndex];
         currentOutfitImg.src= currentOutfit.src;
 
+        //Checks if outfit is unlocked
         if(currentOutfit.locked){
             outfitStatus.textContent = "Locked - (Purchasable in shop)";
             outfitStatus.style.color = "#C70039";
@@ -42,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    //buttons to different outfits
     previousBtn.addEventListener("click", function(){
         currentIndex = (currentIndex - 1 + outfits.length) % outfits.length;
         updateOutfitDisplay();
@@ -52,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
         updateOutfitDisplay();
     });
 
+    //Switches the outfit
     selectBtn.addEventListener("click", function(){
         if(!outfits[currentIndex].locked){
             mainCatImg.src = outfits[currentIndex].src;
@@ -66,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
         updateOutfitDisplay();
     });
 
+    //Saves outfit
     const savedOutfit = localStorage.getItem("selectedOutfit");
     if(savedOutfit){
         mainCatImg.src = savedOutfit;
