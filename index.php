@@ -46,9 +46,7 @@
         const isLoggedIn = <?php echo json_encode($isLoggedIn); ?>;
         const coins = <?php echo $coins; ?>; // Pass coins to JavaScript
     </script>
-    <!-- UI -->
-        <!-- UI -->
-        <body>
+   <body>
         <!-- UI -->
         <div class="body">
 
@@ -94,6 +92,10 @@
                     <img style="background-color: transparent; width: inherit;" src="timer.png" alt="Timer">
                 </button>
 
+                <button id="soundBtn">
+                    <img style="background-color: transparent; width: inherit;" src="music.png" alt="Sound">
+                </button>
+
                 <!-- Settings -->
                 <button id="settingBtn">
                     <img style="background-color: transparent; width: inherit;" src="settingsIcon.png" alt="Settings">
@@ -115,24 +117,25 @@
                 <div class="shop-grid">
                     <button class="shop-item">
                         <img src="petfood.png" alt="Item 1">
-                        <span class="price">X Coins</span>
+                        <span class="price">5 Coins</span>
                     </button>
                     <button class="shop-item">
                         <img src="waterbottle.png" alt="Item 2">
-                        <span class="price">X Coins</span>
+                        <span class="price">3 Coins</span>
                     </button>
                     <button class="shop-item">
                         <img src="tophat.png" alt="Item 3">
-                        <span class="price">X coins</span>
+                        <span class="price">60 coins</span>
                     </button>
                     <button class="shop-item">
                         <img src="scarf.png" alt="Item 4">
-                        <span class="price">X coins</span>
+                        <span class="price">15 coins</span>
                     </button>
                 </div>
             </div>
         </div>
 
+        <!-- Wardrobe -->
         <div id="hangerModal" class="modal hanger-modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
@@ -173,8 +176,27 @@
             </div>
         </div>
 
+        <!-- Sound -->
+        <div id="soundModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="darkmodeH2">Sound</h2>
 
-           <!-- Login Modal -->
+                <div class="sound-grid">
+                    <button class="sound-item" data-sound="rain">Rain
+                        <img src="rain.png" alt="Rain Image">
+                    </button>
+                    <button class="sound-item" data-sound="fireplace">Fireplace
+                        <img src="campfire.png" alt="Fireplace Image">
+                    </button>
+                    <button class="sound-item" data-sound="brownNoise">Brown Noise
+                        <img src="brownnoise.png" alt="BrownNoise Image">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+            <!-- Login Modal -->
         <div id="loginModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
@@ -239,5 +261,6 @@
         <script src="font.js"></script>
         <script src="shop.js"></script>
         <script src="hanger.js"></script>
+        <script src="sound.js"></script>
     </body>
 </html>
