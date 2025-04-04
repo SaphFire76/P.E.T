@@ -1,7 +1,7 @@
 let audioContext;
 let soundSource;
 let soundBuffer;
-let isSoundPlaying = false;
+let soundPlaying = false;
 let selectedSound = null;
 
 const soundFiles = {
@@ -10,7 +10,7 @@ const soundFiles = {
     brownNoise: "brownnoise.mp3"
 };
 
-function initAudio(){
+function audio(){
     try {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
     } catch (e) {
@@ -19,7 +19,7 @@ function initAudio(){
 }
 
 async function loadSound(soundName){
-    if(!audioContext) initAudio();
+    if(!audioContext) audio();
     
     try{
         const response = await fetch(soundFiles[soundName]);
@@ -44,13 +44,13 @@ function playSound(){
     soundSource.loop = true;
     soundSource.connect(audioContext.destination);
     soundSource.start();
-    isSoundPlaying = true;
+    soundPlaying = true;
 }
 
 function stopSound(){
-    if (soundSource && isSoundPlaying){
+    if (soundSource && soundPlaying){
         soundSource.stop();
-        isSoundPlaying = false;
+        soundPlaying = false;
     }
 }
 
@@ -85,7 +85,7 @@ window.soundControls = {
 document.addEventListener("DOMContentLoaded", () => {
     document.body.addEventListener("click", () => {
         if(!audioContext){
-            initAudio();
+            audio();
         }
     },{once:true});
     
